@@ -28,6 +28,18 @@ app.get("/pin/:pin/:state", (req, res) => {
     res.send(`Switched ${req.params.pin}`)
 })
 
+const switchIn = new Gpio( '17', 'in', 'both' );
+
+switchIn.watch( ( err, value ) => {
+  if( err ) {
+    console.log( 'Error', err );
+  }
+
+  // log pin value (0 or 1)
+  console.log( 'Pin value', value );
+} );
+
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
