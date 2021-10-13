@@ -21,6 +21,7 @@ app.get("/pin/:pin/:state", (req, res) => {
     let led = new Gpio(lednr, "out")
     let state = parseInt(req.params.state)
     
+    
     console.log(`Pin: ${lednr}\t|\tState: ${state}`);
 
     led.writeSync(state);
